@@ -16,6 +16,16 @@ const faqSchema = new mongoose.Schema({
         default: "General"
     },
 
+    helpful: {
+        type: Number,
+        default: 0
+    },
+
+    confusing: {
+        type: Number,
+        default: 0
+    },
+
     createdAt: {
         type: Date,
         default: Date.now

@@ -41,4 +41,39 @@ router.post("/", async (req, res) => {
     }
 });
 
+router.patch("/:id/helpful", async (req,res) => { //we use patch not post
+    // because we are modyfying resource
+    try {
+        const faq = await Faq.findById(req.params.id);
+        faq.helpful +=1;
+        await faq.save();
+        res.json(faq);
+
+    }catch(error) {
+        res.status(500).json({
+            message:error.message
+        });
+    }
+});
+
+router.patch("/:id/confusing", async (req, res) => {
+
+    try {
+
+        const faq = await Faq.findById(req.params.id);
+
+        faq.confusing += 1;
+
+        await faq.save();
+
+        res.json(faq);
+
+    } catch (error) {
+
+        res.status(500).json({
+            message: error.message
+        });
+    }
+});
+
 module.exports = router;
